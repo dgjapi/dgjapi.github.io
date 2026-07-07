@@ -3,19 +3,28 @@
 <head>
 	<title>Page Title</title>
 	<script src='./api/tkjs/tkinterjs.js'></script>
+	<link rel="icon" href="./DGJAPI.png" type="image/png">
+	<title>DGJAPI - A MIDDLE SCHOOL STUDENT'S API</title>
 </head>
 <body>	
 	<style>
-		.b {
-			background:rgb(0,0,0);
-			color:rgb(255,255,255);
+		#titlebox {
+			background:rgb(12,50,9);
+			color:rgb(150,200,255);
+			margin:0 auto;
+			width:fit-content;
+		}
+		#title {
+			font-family:"Courier New","Consolas",monospace;
+			margin:0 auto;
+			width:fit-content;
+			font-size:30px;
 		}
 	</style>
 	<script>
 		let root = tk.Tk()
-		let b = tk.Frame(root,"b","b_",800,800)
-		let btn = tk.Button(b,"btn","btn_","click me!",function(){tk.Label(b,"666");})
-		let t = tk.Label(b,"hello tkjs......")
+		let titlebox = tk.Frame(root,"box","titlebox",1600,50)
+		let title = tk.Label(titlebox,"label","title","DGJAPI")
 	</script>
 </body>
 </html>
