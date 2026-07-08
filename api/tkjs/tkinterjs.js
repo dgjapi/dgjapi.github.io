@@ -76,12 +76,43 @@ class tk {
 	}
 
 	static Listbox = a648daef0000;
-	static ListboxLine(master,class_,id,ele){
+	static ListboxLine(master,class_="tk.textbox",id="tk",ele){
 		let a = document.createElement("li");
 		a.textContent = ele;
 		a.className = class_;
 		a.id = id;
 		master.appendChild(a);
 		return a;
+	}
+}
+
+class tkEvent{
+	static getInputValueById(id){
+		return document.getElementById(id).value;
+	}
+	static setInputValueById(id,va){
+		document.getElementById(id).value = va;
+	}
+	static getIdByElement(element){
+		return element.id;
+	}
+}
+
+class tkStyle {
+	static BackgroundColor(element,colorstr)
+	{
+		element.style.backgroundColor = colorstr;
+	}
+	static FontColor(element,colorstr)
+	{
+		element.style.color = colorstr;
+	}
+	static BorderRadius(element,sizepx)
+	{
+		element.style.borderRadius = sizepx + "px";
+	}
+	static BoxShadow(element,xoffset,yoffset,blur,color)
+	{
+		element.style.boxShadow = `${xoffset}px ${yoffset}px ${blur}px ${color}`;
 	}
 }
