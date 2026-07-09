@@ -84,6 +84,79 @@ class tk {
 		master.appendChild(a);
 		return a;
 	}
+	static DragFrame(master, class_="tk.dragbox",id="tk") {
+    // 1. 创建可拖拽方框
+    	let box = document.createElement("div");
+    	box.className = class_;
+    	box.id = id;
+    	box.style.position = "absolute";
+    	box.style.width = "153px";
+    	box.style.height = "153px";
+    	box.style.cursor = "grab";
+    	box.style.padding = "8px";
+    	box.style.boxSizing = "border-box";
+    	box.style.fontSize = "14px";
+    	box.style.display = "flex";
+    	box.style.alignItems = "center";
+    	box.style.justifyContent = "center";
+    	box.style.textAlign = "center";
+    	box.style.border = "2px solid #00FF00"; // 赛博绿边框
+    	master.appendChild(box);
+
+    	let isDragging = false;
+    	let offsetX = 0, offsetY = 0;
+
+    	function getPos(e) {
+        	if (e.type.includes('touch')) {
+            	return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        	}
+        	return { x: e.clientX, y: e.clientY };
+    	}
+
+    	function startDrag(e) {
+        	e.preventDefault();
+        	isDragging = true;
+        	const pos = getPos(e);
+        	offsetX = pos.x - box.offsetLeft;
+        	offsetY = pos.y - box.offsetTop;
+		}
+
+    	function moveDrag(e) {
+        	if (!isDragging) return;
+        	e.preventDefault();
+        	const pos = getPos(e);
+        	let left = pos.x - offsetX;
+        	let top = pos.y - offsetY;
+
+        	const winW = document.documentElement.clientWidth;
+        	const winH = document.documentElement.clientHeight;
+        	const boxW = box.offsetWidth;
+        	const boxH = box.offsetHeight;
+
+        	left = Math.max(0, Math.min(left, winW - boxW));
+        	top = Math.max(0, Math.min(top, winH - boxH));
+
+        	box.style.left = left + 'px';
+        	box.style.top = top + 'px';
+    	}
+
+    	function endDrag() {
+        	isDragging = false;
+    	}
+
+    // 鼠标/触屏事件绑定
+    	box.addEventListener('mousedown', startDrag);
+    	document.addEventListener('mousemove', moveDrag);
+    	document.addEventListener('mouseup', endDrag);
+
+    	box.addEventListener('touchstart', startDrag);
+    	document.addEventListener('touchmove', moveDrag);
+    	document.addEventListener('touchend', endDrag);
+    	document.addEventListener('touchcancel', endDrag);
+
+    // 3. 返回这个方框，方便后续扩展
+    	return box;
+	}
 }
 
 class tkEvent{

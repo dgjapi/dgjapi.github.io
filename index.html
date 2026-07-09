@@ -21,6 +21,9 @@
 			width:fit-content;
 			font-size:42px;
 		}
+		.df {
+			background-color: blue;
+		}
 	</style>
 	<script src='./api/tkjs/tkinterjs.js'></script>
 	<script>
@@ -32,6 +35,9 @@
 		let apilisttilte = tk.Label(apilistbox,"label","apilisttitle_","API列表")
 		let apilist = new tk.Listbox(apilistbox,"lb","listbox")
 		apilist.appEnd(tk.ListboxLine(apilist.getObj(),"li","tkjs_line","TkJS"))
+
+		let df = tk.DragFrame(apilistbox,"df",".df")
+		let dftxt = tk.Label(df,"label","dftxt.","拖我")
 	</script>
 </body>
 </html>
