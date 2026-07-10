@@ -1,3 +1,5 @@
+window.TKJSmsgboxDragIndex = 1;
+
 class a648daef0000{
 	constructor(master,class_,id) {
 		let a = document.createElement("ul");
@@ -22,6 +24,7 @@ class a648daef0000{
 }
 
 class tk {
+	static index = 1;
 	static Tk = function(){return document.body;}
 	static title(tit){
 		document.title = tit;
@@ -114,6 +117,8 @@ class tk {
     	}
 
     	function startDrag(e) {
+			this.style.zIndex = `${++window.TKJSmsgboxDragIndex}`;
+			console.log(document.tkjs);
 			let tag = e.target.tagName.toLowerCase();
     		if (tag === 'input' || tag === 'textarea' || tag === 'button' || tag === 'select') {
         		return;

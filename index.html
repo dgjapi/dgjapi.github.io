@@ -28,6 +28,7 @@
 	<script src='./api/tkjs/tkinterjs.js'></script>
 	<script src="./api/tkjs/messagebox.js"></script>
 	<script src="./api/tkjs/progress.js"></script>
+	<script src="./api/tkjs/canvas.js"></script>
 	<script>
 		let root = tk.Tk()
 		let name = ""
@@ -47,6 +48,15 @@
 		let pr = new Progress(root,"a1","a2","b1","b2",400,20)
 		
 		let up = tk.Button(root,"a3","b3","up()",function(){pr.up()})
+
+		let canv = new Canvas(root,"a4","b4",500,500)
+
+		
+		for (let i = 0;i <= 3;i++){
+			for (let j = 0;j<=3;j++){
+				canv.create_rectangle(new Vec2d(50+i*50,50+j*50),100,100)
+			}
+		}
 	</script>
 </body>
 </html>

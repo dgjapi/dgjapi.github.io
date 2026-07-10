@@ -15,6 +15,7 @@ class messagebox {
         tit.style.width = "100%";
         tit.style.padding = "10px 0";
         tit.style.backgroundColor = "#a4a5a5";
+        tit.style.marginBottom = "auto";
     }
     static showinput(master,title,message,callback){
         let isSubmit = false;
@@ -38,5 +39,6 @@ class messagebox {
         tit.style.width = "100%";
         tit.style.padding = "10px 0";
         tit.style.backgroundColor = "#a4a5a5";
+        tit.style.marginBottom = "auto";
     }
 }
