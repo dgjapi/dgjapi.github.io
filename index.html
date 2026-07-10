@@ -27,6 +27,7 @@
 	</style>
 	<script src='./api/tkjs/tkinterjs.js'></script>
 	<script src="./api/tkjs/messagebox.js"></script>
+	<script src="./api/tkjs/progress.js"></script>
 	<script>
 		let root = tk.Tk()
 		let name = ""
@@ -42,6 +43,10 @@
 
 		let df = tk.DragFrame(apilistbox,"df",".df")
 		let dftxt = tk.Label(df,"label","dftxt.","拖我")
+
+		let pr = new Progress(root,"a1","a2","b1","b2",400,20)
+		
+		let up = tk.Button(root,"a3","b3","up()",function(){pr.up()})
 	</script>
 </body>
 </html>
