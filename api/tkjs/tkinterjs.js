@@ -114,6 +114,10 @@ class tk {
     	}
 
     	function startDrag(e) {
+			let tag = e.target.tagName.toLowerCase();
+    		if (tag === 'input' || tag === 'textarea' || tag === 'button' || tag === 'select') {
+        		return;
+    		}
         	e.preventDefault();
         	isDragging = true;
         	const pos = getPos(e);
@@ -166,11 +170,14 @@ class tkEvent{
 	static setInputValueById(id,va){
 		document.getElementById(id).value = va;
 	}
+	static getInputValueByElement(ele){
+		return ele.value;s
+	}
 	static getIdByElement(element){
 		return element.id;
 	}
 	static deleteElement(element){
-		document.removeChild(element);
+		element.parentNode.removeChild(element);
 	}
 }
 
@@ -192,3 +199,4 @@ class tkStyle {
 		element.style.boxShadow = `${xoffset}px ${yoffset}px ${blur}px ${color}`;
 	}
 }
+

@@ -26,8 +26,12 @@
 		}
 	</style>
 	<script src='./api/tkjs/tkinterjs.js'></script>
+	<script src="./api/tkjs/messagebox.js"></script>
 	<script>
 		let root = tk.Tk()
+		let name = ""
+		let a = messagebox.showinput(root,"input","what your name?",function(name){let b = messagebox.showinfo(root,"welcome",`欢迎${name}来到dgjapi!`)})
+
 		let titlebox = tk.Frame(root,"box","titlebox",1600,50)
 		let title = tk.Label(titlebox,"label","title","DGJAPI")
 
