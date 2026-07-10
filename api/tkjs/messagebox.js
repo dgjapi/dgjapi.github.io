@@ -9,13 +9,15 @@ class messagebox {
         box.style.flexDirection = "column";
         box.style.width = `300px`;
         box.style.height = `200px`;
-        box.style.backgroundColor = "#d4d4d4";
+        box.style.backgroundColor = "#4e4e4e";
+        box.style.justifyContent = "flex-start";
 
         tit.style.display = "block";
         tit.style.width = "100%";
         tit.style.padding = "10px 0";
-        tit.style.backgroundColor = "#a4a5a5";
+        tit.style.backgroundColor = "#131313";
         tit.style.marginBottom = "auto";
+        
     }
     static showinput(master,title,message,callback){
         let isSubmit = false;
@@ -33,12 +35,13 @@ class messagebox {
         box.style.flexDirection = "column";
         box.style.width = `300px`;
         box.style.height = `200px`;
-        box.style.backgroundColor = "#d4d4d4";
+        box.style.backgroundColor = "#4e4e4e";
+        box.style.justifyContent = "flex-start";
 
         tit.style.display = "block";
         tit.style.width = "100%";
         tit.style.padding = "10px 0";
-        tit.style.backgroundColor = "#a4a5a5";
+        tit.style.backgroundColor = "#131313";
         tit.style.marginBottom = "auto";
     }
 }
