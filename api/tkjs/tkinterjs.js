@@ -68,6 +68,15 @@ class tk {
 		return a;
 	}
 
+	static Image(master,class_,id,src){
+		let a = document.createElement("img");
+		a.className = class_;
+		a.id = id;
+		a.src = src;
+		master.appendChild(a);
+		return a;
+	}
+
 	static Text(master,class_="tk.text",id="tk",width=50,height=50){
 		let a = document.createElement("textarea");
 		a.style.width = width + "ch";
@@ -203,5 +212,14 @@ class tkStyle {
 	{
 		element.style.boxShadow = `${xoffset}px ${yoffset}px ${blur}px ${color}`;
 	}
+	static XCenter(element){
+		element.style.display = "flex";
+		element.style.justifyContent = "center";
+	}
+	static YCenter(element){
+		element.style.display = "flex";
+		element.style.alignItems = "center";
+	}
+	
 }
 
