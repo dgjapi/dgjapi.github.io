@@ -1,4 +1,6 @@
-window.TKJSmsgboxDragIndex = 1;
+window.TKJSmsgboxDragIndex = 2;
+window.TKJTheme = 0;
+window.TKJSElementList = [];
 
 class a648daef0000{
 	constructor(master,class_,id) {
@@ -29,6 +31,44 @@ class tk {
 	static title(tit){
 		document.title = tit;
 	}
+
+	static update(){
+		for (let o of window.TKJSElementList){
+			console.log(o);
+			console.log(o.tagName);
+			console.log(8*"*")
+			if (window.TKJSTheme == 1){
+				document.body.style.backgroundColor = "#404040"
+				if (o.tagName == "BUTTON"){
+					o.style.backgroundColor = "#161616";
+				}
+				if (o.tagName == "P"){
+					o.style.color = "#fdfdfd";
+				}
+			}else if(window.TKJSTheme == 0){
+				document.body.style.backgroundColor = "#c4c4c4"
+				if (o.tagName == "BUTTON"){
+					o.style.backgroundColor = "#a3a3a3";
+				}
+				if (o.tagName == "P"){
+					o.style.color = "#0f0f0f";
+				}
+
+			}else if(window.TKJSTheme == 2){
+				document.body.style.backgroundColor = "#020202"
+				if (o.tagName == "BUTTON"){
+					o.style.backgroundColor = "#001aff";
+					o.style.border = "2px solid #00fff2"
+				}
+				if (o.tagName == "P"){
+					o.style.color = "#00c41a";
+				}
+
+			}else{
+				console.log(`ERROR:${window.TKJSTheme}不是标准UI档案`)
+			}
+		}
+	}
 	
 	static Frame(master,class_="tk.frame",id="tk",width=100,height=100){
 		let a = document.createElement("div");
@@ -37,6 +77,7 @@ class tk {
 		a.className = class_;
 		a.id = id;
 		master.appendChild(a);
+		window.TKJSElementList.push(a);
 		return a;
 	}
 	
@@ -46,6 +87,7 @@ class tk {
 		a.className = class_;
 		a.id = id;
 		master.appendChild(a);
+		window.TKJSElementList.push(a);
 		return a;
 	}
 	
@@ -56,6 +98,7 @@ class tk {
 		a.className = class_;
 		a.id = id;
 		master.appendChild(a);
+		window.TKJSElementList.push(a);
 		return a;
 	}
 
@@ -65,6 +108,7 @@ class tk {
 		a.className = class_;
 		a.id = id;
 		master.appendChild(a);
+		window.TKJSElementList.push(a);
 		return a;
 	}
 
@@ -74,6 +118,7 @@ class tk {
 		a.id = id;
 		a.src = src;
 		master.appendChild(a);
+		window.TKJSElementList.push(a);
 		return a;
 	}
 
@@ -84,6 +129,7 @@ class tk {
 		a.className = class_;
 		a.id = id;
 		master.appendChild(a);
+		window.TKJSElementList.push(a);
 		return a;
 	}
 
@@ -94,6 +140,7 @@ class tk {
 		a.className = class_;
 		a.id = id;
 		master.appendChild(a);
+		window.TKJSElementList.push(a);
 		return a;
 	}
 	static DragFrame(master, class_="tk.dragbox",id="tk") {
@@ -129,7 +176,7 @@ class tk {
 			this.style.zIndex = `${++window.TKJSmsgboxDragIndex}`;
 			console.log(document.tkjs);
 			let tag = e.target.tagName.toLowerCase();
-    		if (tag === 'input' || tag === 'textarea' || tag === 'button' || tag === 'select') {
+    		if (tag !== "div") {
         		return;
     		}
         	e.preventDefault();
@@ -162,7 +209,6 @@ class tk {
         	isDragging = false;
     	}
 
-    // 鼠标/触屏事件绑定
     	box.addEventListener('mousedown', startDrag);
     	document.addEventListener('mousemove', moveDrag);
     	document.addEventListener('mouseup', endDrag);
@@ -172,7 +218,8 @@ class tk {
     	document.addEventListener('touchend', endDrag);
     	document.addEventListener('touchcancel', endDrag);
 
-    // 3. 返回这个方框，方便后续扩展
+		window.TKJSElementList.push(box);
+
     	return box;
 	}
 }
@@ -185,7 +232,7 @@ class tkEvent{
 		document.getElementById(id).value = va;
 	}
 	static getInputValueByElement(ele){
-		return ele.value;s
+		return ele.value;
 	}
 	static getIdByElement(element){
 		return element.id;
@@ -218,7 +265,7 @@ class tkStyle {
 	}
 	static YCenter(element){
 		element.style.display = "flex";
-		element.style.alignItems = "center";
+		element.style.alignContent= "center";
 	}
 	
 }
