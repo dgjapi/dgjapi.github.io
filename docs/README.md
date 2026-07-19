@@ -336,3 +336,455 @@ tkStyle.FontColor(btn,"#ffffff");//十六进制颜色编码,表示白色
 tkStyle.BorderRadius(btn,12);
 ```
 
+
+
+你学会了吗？
+
+# 所用控件API（第3课）
+
+目标
+
+学习 TkJS 中所有控件的**参数、用法、返回值**，并能够合理运用它们搭建页面。
+
+------
+
+# 1. 核心控件
+
+## 1.1 [tk.Tk](https://tk.tk/)()
+
+### 参数
+
+无
+
+### 返回值
+
+`document.body`（DOM 元素）
+
+### 示例
+
+javascript
+
+```
+let root = tk.Tk();
+// root 就是 document.body，所有控件都挂在这里
+```
+
+
+
+------
+
+## 1.2 tk.title()
+
+### 参数
+
+- `tit`：字符串，要设置的标题
+
+### 返回值
+
+无
+
+### 示例
+
+javascript
+
+```
+tk.title("我的 TkJS 应用");
+// 浏览器标签页显示 "我的 TkJS 应用"
+```
+
+
+
+------
+
+# 2. 布局控件
+
+## 2.1 tk.Frame()
+
+### 参数
+
+- `master`：父容器（一般是 root）
+- `class_`：CSS 类名（可选，默认 `"tk.frame"`）
+- `id`：元素 ID（可选，默认 `"tk"`）
+- `width`：宽度，单位 px（可选，默认 `100`）
+- `height`：高度，单位 px（可选，默认 `100`）
+
+### 返回值
+
+创建的 div 元素
+
+### 示例
+
+javascript
+
+```
+let root = tk.Tk();
+let frame = tk.Frame(root, "my_frame", "f1", 300, 200);
+// 创建了一个 300x200 的容器
+```
+
+
+
+------
+
+## 2.2 tk.DragFrame()
+
+### 参数
+
+- `master`：父容器
+- `class_`：CSS 类名（可选，默认 `"tk.dragbox"`）
+- `id`：元素 ID（可选，默认 `"tk"`）
+
+### 返回值
+
+创建的 div 元素（可拖拽）
+
+### 示例
+
+javascript
+
+```
+let drag = tk.DragFrame(root, "drag_box", "d1");
+drag.textContent = "拖我！";
+// 创建一个可以拖动的方框
+```
+
+
+
+------
+
+# 3. 显示控件
+
+## 3.1 tk.Label()
+
+### 参数
+
+- `master`：父容器
+- `class_`：CSS 类名（可选，默认 `"tk.label"`）
+- `id`：元素 ID（可选，默认 `"tk"`）
+- `text`：显示的文本（可选，默认 `"hello tkjs!"`）
+
+### 返回值
+
+创建的 p 元素
+
+### 示例
+
+javascript
+
+```
+let lab = tk.Label(root, "my_label", "l1", "你好，TkJS！");
+// 显示 "你好，TkJS！"
+```
+
+
+
+------
+
+## 3.2 tk.Image()
+
+### 参数
+
+- `master`：父容器
+- `class_`：CSS 类名
+- `id`：元素 ID
+- `src`：图片地址（URL 或路径）
+
+### 返回值
+
+创建的 img 元素
+
+### 示例
+
+javascript
+
+```
+let img = tk.Image(root, "my_img", "i1", "https://example.com/photo.jpg");
+// 显示一张图片
+```
+
+
+
+------
+
+# 4. 交互控件
+
+## 4.1 tk.Button()
+
+### 参数
+
+- `master`：父容器
+- `class_`：CSS 类名（可选，默认 `"tk.button"`）
+- `id`：元素 ID（可选，默认 `"tk"`）
+- `text`：按钮文字（可选，默认 `"hello tkjs!"`）
+- `onclick`：点击事件函数（可选，默认弹窗 `"hello tkjs!"`）
+
+### 返回值
+
+创建的 button 元素
+
+### 示例
+
+javascript
+
+```
+let btn = tk.Button(root, "my_btn", "b1", "点我", function(){
+    alert("你点击了按钮！");
+});
+```
+
+
+
+------
+
+## 4.2 tk.Entry()
+
+### 参数
+
+- `master`：父容器
+- `class_`：CSS 类名（可选，默认 `"tk.entry"`）
+- `id`：元素 ID（可选，默认 `"tk"`）
+
+### 返回值
+
+创建的 input 元素
+
+### 示例
+
+javascript
+
+```
+let entry = tk.Entry(root, "my_entry", "e1");
+// 用户可以在里面输入文字
+```
+
+
+
+------
+
+## 4.3 tk.Text()
+
+### 参数
+
+- `master`：父容器
+- `class_`：CSS 类名（可选，默认 `"tk.text"`）
+- `id`：元素 ID（可选，默认 `"tk"`）
+- `width`：宽度，单位 ch（可选，默认 `50`）
+- `height`：高度，单位 em（可选，默认 `50`）
+
+### 返回值
+
+创建的 textarea 元素
+
+### 示例
+
+javascript
+
+```
+let text = tk.Text(root, "my_text", "t1", 40, 10);
+// 创建了一个 40 列宽、10 行高的文本框
+```
+
+
+
+------
+
+# 5. 列表控件
+
+## 5.1 tk.Listbox
+
+### 参数
+
+- `master`：父容器
+- `class_`：CSS 类名（可选，默认 `""`）
+- `id`：元素 ID（可选，默认 `""`）
+
+### 返回值
+
+Listbox 对象
+
+### 方法
+
+- `appEnd(ele)`：在列表末尾添加一个元素
+- `deleteEnd()`：删除列表最后一个元素
+- `getObj()`：返回底层的 ul 元素
+
+### 示例
+
+javascript
+
+```
+let list = new tk.Listbox(root, "my_list", "l1");
+let item = tk.ListboxLine(list.getObj(), "item_class", "i1", "苹果");
+list.appEnd(item);
+// 列表显示：苹果
+```
+
+
+
+------
+
+## 5.2 tk.ListboxLine()
+
+### 参数
+
+- `master`：父容器（通常是 Listbox 的 ul）
+- `class_`：CSS 类名（可选，默认 `"tk.textbox"`）
+- `id`：元素 ID（可选，默认 `"tk"`）
+- `ele`：显示的文本内容
+
+### 返回值
+
+创建的 li 元素
+
+### 示例
+
+javascript
+
+```
+let item = tk.ListboxLine(list.getObj(), "item_style", "i1", "香蕉");
+list.appEnd(item);
+// 列表添加 "香蕉"
+```
+
+
+
+------
+
+# 6. 综合运用示例
+
+## 6.1 搭建一个完整的页面
+
+javascript
+
+```
+let root = tk.Tk();
+tk.title("TkJS 综合示例");
+
+// 创建一个标签
+let lab = tk.Label(root, "title_lab", "l1", "欢迎来到 TkJS");
+
+// 创建一个输入框
+let entry = tk.Entry(root, "input_style", "e1");
+
+// 创建一个按钮
+let btn = tk.Button(root, "btn_style", "b1", "提交", function(){
+    let val = tkEvent.getInputValueById("e1");
+    alert("你输入了：" + val);
+});
+
+// 创建一个列表
+let list = new tk.Listbox(root, "list_style", "l1");
+let item1 = tk.ListboxLine(list.getObj(), "item_style", "i1", "项目一");
+let item2 = tk.ListboxLine(list.getObj(), "item_style", "i2", "项目二");
+list.appEnd(item1);
+list.appEnd(item2);
+```
+
+
+
+------
+
+## 6.2 添加样式
+
+javascript
+
+```
+tkStyle.BackgroundColor(root, "#f0f0f0");
+tkStyle.FontColor(lab, "#333333");
+tkStyle.BorderRadius(btn, 10);
+tkStyle.BoxShadow(btn, 2, 2, 5, "#888888");
+```
+
+
+
+你学会了吗？
+
+
+
+# TkJS(Compose API) (进阶第0课)
+
+Compose API可以让tkjs像原版Tkinter（python）一样，可以通过键值对参数来进行编写。就比如python中的
+
+```python
+import tkinter as tk
+
+root = tk.Tk()
+lab = tk.Label(master=root,text="hello tkinter!")
+
+root.mainloop()
+```
+
+API文件位于`https://tkjsapi.github.io/api/tkjs/compose/tkjs.js`,可以通过两种方法引入。（和‘第0课’中的方法一致，把链接换成上文所述）
+
+除此以外，单独定义一个控件时，不会自动挂载。并且tkc.Tk()函数加入了ele参数，接受数组数据。
+
+**警告：Compose API依赖于原版tkjs，请先引入tkinterjs.js(原版)后再进行引入。**
+
+
+
+# TkJS(Compose API) 文本+参数传递 （进阶第1课）
+
+目标
+
+使用TkJS Compose API写出一个基础页面，显示出”hello world”
+
+
+
+使用API
+
+`tkinterjs.js/tk`
+
+`tkinterjs.js/tkStyle`
+
+`compose/tkjs.js/tkc/Tk()`
+
+`compose/tkjs.js/tkc/CLabel(conf)`
+
+`compose/tkjs.js/Attr(conf={})`
+
+
+
+## Attr函数
+
+用于生成默认配置，也可以加入自定义参数。
+
+### 参数：conf
+
+用于加入自定义参数
+
+
+
+## CLabel方法
+
+用于创建文本
+
+### 参数：conf
+
+接受对象和Attr返回值。
+
+输入的对象完全决定了控件数据。
+
+
+
+js代码
+
+```javascript
+let root = tkc.Tk([
+    tkc.CLabel(
+    	Attr(
+        	{ text:"hello world"} 
+        )//可以替换为{text:"hello world",id:"id_",class_:"class_"}
+    )
+]);
+```
+
+你学会了吗？
+
+
+
+未完待续...
+
+
+
+
+
