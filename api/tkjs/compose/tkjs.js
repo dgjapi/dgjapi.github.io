@@ -60,4 +60,19 @@ class tkc{
 		a.id = conf.id;
 		return a;
     }
+    static CImage(conf){
+        let a = document.createElement("img");
+		a.className = conf.class_;
+		a.id = conf.id;
+		a.src = conf.src;
+		return a;
+    }
+    static CText(conf){
+		let a = document.createElement("textarea");
+		a.style.width = conf.width + "ch";
+		a.style.height = conf.height + "em";
+		a.className = conf.class_;
+		a.id = conf.id;
+		return a;
+    }
 }

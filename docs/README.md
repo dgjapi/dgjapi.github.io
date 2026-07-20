@@ -782,7 +782,62 @@ let root = tkc.Tk([
 
 
 
-未完待续...
+
+
+# TkJS(Compose API) 所有控件（进阶第2课）
+
+
+
+## 控件列表
+
+
+
+|  控件   |      作用      |                             用法                             |
+| :-----: | :------------: | :----------------------------------------------------------: |
+|   Tk    |   获取主窗口   |                       `tkc.Tk([...])`                        |
+| CLabel  |    创建文本    | `tkc.CLabel(Attr(...))`;`tkc.Tk([tkc.Label(Attr(...)),...])` |
+| CButton |    创建按钮    |                   `tkc.CButton(Attr(...))`                   |
+| CFrame  |    创建框架    |                    `tkc.Frame(Attr(...))`                    |
+| CEntry  |   创建输入框   |                   `tkc.CEntry(Attr(...))`                    |
+| CImage  |   创建图片框   |                   `tkc.CImage(Attr(...))`                    |
+|  CText  | 创建多行输入框 |                    `tkc.CText(Attr(...))`                    |
+
+
+
+## Attr用法列表
+
+### 共有参数
+
+#### class_
+
+控件类名，用于CSS。
+
+#### id
+
+控件id，同样用于css
+
+若不需要CSS可传入空字符串。
+
+
+
+**class_和id适用于所有控件。**
+
+
+
+### 独有参数
+
+| 控件    | Attr参数列表                                   |
+| ------- | ---------------------------------------------- |
+| CLabel  | Attr({text:"文本"})                            |
+| CButton | Attr({text:"文本",onclick:function(...){...}}) |
+| CFrame  | Attr({width:数字,height:数字})                 |
+| CEntry  | 无独有参数                                     |
+| CImage  | Attr({src:"链接"})                             |
+| CText   | Attr({width:数字,height:数字})                 |
+
+
+
+你学会了吗？
 
 
 
